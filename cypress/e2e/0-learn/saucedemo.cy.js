@@ -5,16 +5,16 @@ describe('Saucedemo Website', () => {
 
     beforeEach(() => {
         //Access Login
-        cy.visit('/')
+        cy.visit('https://www.saucedemo.com/')
         cy.get('#root > div > div.login_logo').should('contains.text', 'Swag Labs')
         cy.get('h4').should('contains.text', 'Accepted usernames are:')
 
         cy.fixture ("login").then(login => {
-            const id = login.id
-            const pw = login.pw
+            const id = login.id1
+            const pw = login.pw1
     
-            cy.get('#user-name').type(login.id)
-            cy.get('#password').type(login.pw)
+            cy.get('#user-name').type(login.id1)
+            cy.get('#password').type(login.pw1)
             cy.get('#login-button').click()
             
             })

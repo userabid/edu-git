@@ -21,15 +21,15 @@ describe('Login Test Website Zero Bank', () => {
           const id = login.id
           const pw = login.pw
 
-          cy.loginweb(id, pw)
+          // cy.loginweb(id, pw)
           
-          // cy.get('#user_login').type(id)
-          // cy.get('input[name="user_password"]').type(pw)
-          // cy.get('#user_remember_me').click()
-          // cy.get('#login_form > div.form-actions > input').click()
+          cy.get('#user_login').type(id)
+          cy.get('input[name="user_password"]').type(pw)
+          cy.get('#user_remember_me').click()
+          cy.get('#login_form > div.form-actions > input').click()
         
           
-          // cy.get('body > div.wrapper > div.navbar.navbar-fixed-top > div > div > a').should('have.text','Zero Bank')
+          cy.get('body > div.wrapper > div.navbar.navbar-fixed-top > div > div > a').should('have.text','Zero Bank')
     })
   })
 })
