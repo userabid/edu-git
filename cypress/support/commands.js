@@ -28,11 +28,20 @@
 
 // Command masih belum bisa
 
+Cypress.Commands.add('masuk', (id, pw) => {
+        cy.clearCookies();
+        cy.clearLocalStorage();
+        cy.get('#user_login').type(id)
+        cy.get('#user_password').type(pw)
+        cy.get('#user_remember_me').click();
+        cy.get('#login_form > div.form-actions > input').click();
+    })
+
 // cypress.commands.add('loginweb', (id, pw) => {
 //         cy.clearCookies();
 //         cy.clearLocalStorage();
 //         cy.get('#user_login').type(id)
-//           cy.get('input[name="user_password"]').type(pw)
-//           cy.get('#user_remember_me').click()
-//           cy.get('#login_form > div.form-actions > input').click()
+//         cy.get('input[name="user_password"]').type(pw)
+//         cy.get('#user_remember_me').click()
+//         cy.get('#login_form > div.form-actions > input').click()
 // })

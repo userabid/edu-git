@@ -11,12 +11,18 @@ describe('Payment Bill Zero Bank', () => {
         cy.get('h3').should('contains.text', 'Log in to ZeroBank')
        
         //Login Page
-        // cy.masuk(email, password)           
-        cy.get('#user_login').type('username')
-        cy.get('#user_password').type('password')
-        cy.get('#user_remember_me').click();
-        cy.get('#login_form > div.form-actions > input').click();
-        cy.get('body > div.wrapper > div.container > div > div:nth-child(2) > div > div > h2:nth-child(1)').should('contain.text', 'Cash Accounts')
+        cy.fixture('login').then(login => {
+          const username = login.id
+          const password = login.pw
+
+        cy.masuk(username, password)           
+    
+        })            
+        // cy.get('#user_login').type('username')
+        // cy.get('#user_password').type('password')
+        // cy.get('#user_remember_me').click();
+        // cy.get('#login_form > div.form-actions > input').click();
+        // cy.get('body > div.wrapper > div.container > div > div:nth-child(2) > div > div > h2:nth-child(1)').should('contain.text', 'Cash Accounts')
 
         //Payment
         cy.get('#pay_bills_tab').click()
