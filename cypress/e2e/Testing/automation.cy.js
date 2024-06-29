@@ -88,7 +88,7 @@ describe('Saucedemo Website', () => {
           })
       cy.get('#header_container > div.header_secondary_container > span').should('have.text', 'Products')
 
-      //Sort Item
+      //See Detail Item
       cy.get('#item_4_img_link > img').click()
       cy.get('#inventory_item_container > div > div > div.inventory_details_desc_container > div.inventory_details_name.large_size').should('contain.text', 'Sauce Labs Backpack')
               
@@ -114,5 +114,23 @@ describe('Saucedemo Website', () => {
             
 });
   
+
+it('Sort Item', () => {
+  //Login Page
+  cy.fixture ("login").then(login => {
+      const id = login.id1
+      const pw = login.pw1
+
+      cy.get('#user-name').type(login.id1)
+      cy.get('#password').type(login.pw1)
+      cy.get('#login-button').click()
+      
+      })
+  cy.get('#header_container > div.header_secondary_container > span').should('have.text', 'Products')
+
+  //Sort Item
+  //cy.get('#header_container > div.header_secondary_container > div').click()
+  cy.get('#header_container > div.header_secondary_container > div > span > select').select(3)
+});
 
 })
